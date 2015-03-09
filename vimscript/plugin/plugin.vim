@@ -7,76 +7,43 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let s:save_cpo = &cpo
 set cpo&vim
+
+if exists("g:loaded_template")
+    finish
+else
+    let g:loaded_template = 1
+endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""}}}
 
 
 " GLOBALS {{{
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let s:global = 0
+let g:template_option = get(g:, 'template_option', 'default value')
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""}}}
 
 
-" PUBLIC FUNCTIONS {{{
+" AUTOCMDS {{{
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! crunch#cmd_line_crunch(user_input) "{{{2
-    " a comment
-
-endfunction "}}}2
-
-
-function! crunch#eval(arg) abort "{{{2
-    " a comment
-
-endfunction "}}}2
+augroup AUGROUP_NAME
+    autocmd!
+    autocmd AUTOCMD call template#thing()
+augroup END
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""}}}
 
 
-" PRIVATE FUNCTIONS {{{
+" COMMANDS {{{
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! s:some_func(expr) abort "{{{2
-    " comments go here
-    " and here
-
-endfunction "}}}2
-
-
-function! s:some_funct2(an_arg, another_arg) abort "{{{2
-    " comments go here
-    " comments also go here
-
-endfunction "}}}2
+command! -nargs=* -range=0 -bang Template call
+            \ template#command(<count>, <line1>, <line2>, <q-args>, "<bang>")
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""}}}
 
 
-" CLASS {{{
+" MAPPINGS {{{
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! some#new() abort "{{{2
-
-    let some = {
-                \  'arg1' : '',
-                \  'arg2' : 0,
-                \  'fun1' : function('some#fun1('),
-                \  'fun2' : function('some#fun2('),
-                \  }
-
-    if 1
-        let some.arg1 = 'none'
-        let some.arg2 =  1
-    else
-        let some.arg1 = 'some'
-        let some.arg2 =  2
-    endif
-
-    return some
-endfunction "}}}2
-
-
-function! some#fun1() abort dict "{{{2
-endfunction "}}}2
-
-
-function! some#fun2() abort dict "{{{2
-endfunction "}}}2
+nnoremap <silent> <script> <Plug>(template-name) :<C-u>call template#func()<CR>
+if !hasmapto('<Plug>(template-name)')
+    nmap <unique> g= <Plug>(template-name)
+endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""}}}
 
 

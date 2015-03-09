@@ -7,43 +7,76 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let s:save_cpo = &cpo
 set cpo&vim
-
-if exists("g:loaded_some")
-    finish
-else
-    let g:loaded_some = 1
-endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""}}}
 
 
 " GLOBALS {{{
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:some_option = get(g:, 'some_option', 'default value')
+let s:template_global = 0
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""}}}
 
 
-" AUTOCMDS {{{
+" PUBLIC FUNCTIONS {{{
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-augroup AUGROUP_NAME
-    autocmd!
-    autocmd AUTOCMD call some#thing()
-augroup END
+function! template#cmd_line(user_input) "{{{2
+    " a comment
+
+endfunction "}}}2
+
+
+function! template#eval(arg) abort "{{{2
+    " a comment
+
+endfunction "}}}2
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""}}}
 
 
-" COMMANDS {{{
+" PRIVATE FUNCTIONS {{{
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-command! -nargs=* -range=0 -bang Some call
-            \ someh#command(<count>, <line1>, <line2>, <q-args>, "<bang>")
+function! s:template_func(expr) abort "{{{2
+    " comments go here
+    " and here
+
+endfunction "}}}2
+
+
+function! s:template_funct2(an_arg, another_arg) abort "{{{2
+    " comments go here
+    " comments also go here
+
+endfunction "}}}2
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""}}}
 
 
-" MAPPINGS {{{
+" CLASS {{{
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <silent> <script> <Plug>(some-name) :<C-u>call some#func()<CR>
-if !hasmapto('<Plug>(some-name)')
-    nmap <unique> g= <Plug>(some-name)
-endif
+function! template#new() abort "{{{2
+
+    let template = {
+                \  'arg1' : '',
+                \  'arg2' : 0,
+                \  'fun1' : function('template#fun1('),
+                \  'fun2' : function('template#fun2('),
+                \  }
+
+    if 1
+        let template.arg1 = 'none'
+        let template.arg2 =  1
+    else
+        let template.arg1 = 'template'
+        let template.arg2 =  2
+    endif
+
+    return template
+endfunction "}}}2
+
+
+function! template#fun1() abort dict "{{{2
+endfunction "}}}2
+
+
+function! template#fun2() abort dict "{{{2
+endfunction "}}}2
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""}}}
 
 
