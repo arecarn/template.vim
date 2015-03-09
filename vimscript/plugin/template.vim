@@ -40,7 +40,8 @@ command! -nargs=* -range=0 -bang Template call
 
 " MAPPINGS {{{
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <silent> <script> <Plug>(template-name) :<C-u>call template#func()<CR>
+nnoremap <silent> <script> <Plug>(template-name)
+            \ :<C-u>call template#function()<CR>
 if !hasmapto('<Plug>(template-name)')
     nmap <unique> g= <Plug>(template-name)
 endif
@@ -52,4 +53,5 @@ endif
 let &cpo = s:save_cpo
 unlet s:save_cpo
 " vim:foldmethod=marker
+" vim: textwidth=78
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""}}}
