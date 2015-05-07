@@ -18,13 +18,15 @@ endif
 
 " GLOBALS {{{
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:template_load_default_maps = get(g:, 'template_load_default_maps', 1)
+
 let g:template_option = get(g:, 'template_option', 'default value')
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""}}}
 
 
 " AUTOCMDS {{{
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-augroup AUGROUP_NAME
+augroup autogroup_name
     autocmd!
     autocmd AUTOCMD call template#thing()
 augroup END
@@ -40,10 +42,12 @@ command! -nargs=* -range=0 -bang Template call
 
 " MAPPINGS {{{
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <silent> <script> <Plug>(template-name)
-            \ :<C-u>call template#function()<CR>
-if !hasmapto('<Plug>(template-name)')
-    nmap <unique> g= <Plug>(template-name)
+nnoremap <silent> <Plug>(template-name) :<C-u>call template#function()<CR>
+
+if g:template_load_default_maps
+    if !hasmapto('<Plug>(template-name)')
+        nmap <unique> g= <Plug>(template-name)
+    endif
 endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""}}}
 
