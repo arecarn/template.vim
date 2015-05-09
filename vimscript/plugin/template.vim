@@ -3,8 +3,7 @@
 " License: WTFPL
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" BOILER PLATE {{{
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""{{{
 let s:save_cpo = &cpo
 set cpo&vim
 
@@ -15,14 +14,12 @@ else
 endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""}}}
 
-
 " GLOBALS {{{
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:template_load_default_maps = get(g:, 'template_load_default_maps', 1)
+let g:template_default_mapping = get(g:, 'template_default_mapping', 1)
 
 let g:template_option = get(g:, 'template_option', 'default value')
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""}}}
-
 
 " AUTOCMDS {{{
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -32,28 +29,32 @@ augroup autogroup_name
 augroup END
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""}}}
 
-
 " COMMANDS {{{
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 command! -nargs=* -range=0 -bang Template call
             \ template#command(<count>, <line1>, <line2>, <q-args>, "<bang>")
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""}}}
 
-
 " MAPPINGS {{{
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <silent> <Plug>(template-name) :<C-u>call template#function()<CR>
-
-if g:template_load_default_maps
-    if !hasmapto('<Plug>(template-name)')
-        nmap <unique> g= <Plug>(template-name)
+function! s:do_map(mode, lhs, rhs, name, default_option) abort "{{{2
+    let plug = '<Plug>('.a:name.')'
+    execute a:mode.'noremap <silent> '.plug.' '.a:rhs
+    if a:default_option
+        execute a:mode.'map <unique> '.a:lhs.' '.plug
     endif
-endif
+endfunction "}}}2
+
+call s:do_map(
+            \ "n",
+            \ "g=",
+            \ ":\<C-u>call template#function()\<CR>",
+            \ "template-name",
+            \ g:template_default_mapping,
+            \ )
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""}}}
 
-
-" BOILER PLATE {{{
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""{{{
 let &cpo = s:save_cpo
 unlet s:save_cpo
 " vim:foldmethod=marker
