@@ -4,8 +4,8 @@
 
 Description ........................................... |template-description|
 Usage ................................................. |template-usage|
-    Commands .......................................... |template-commands|
     Key Mappings ...................................... |template-key-mappings|
+    Commands .......................................... |template-commands|
 Configuration ......................................... |template-configuration|
     Variables ......................................... |template-variables|
 
@@ -40,7 +40,7 @@ COMMANDS                                                   *template-commands*
                         some explanation goes
 
 
-                                                *:Template*
+                                                *:Template2*
 :[range]Template2 {param1} {param2}
                         This is a longer command with some more information.
                         Here is where some explanation goes also some about
