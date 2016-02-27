@@ -10,6 +10,10 @@ Usage
 
 Additional Explanation of Template
 
+Requirements
+------------
+* ![vim-repeat](https://github.com/tpope/vim-repeat)
+
 Demo
 ----
 ![demo](https://link.demo.com/demo.gif)

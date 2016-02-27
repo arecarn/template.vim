@@ -3,6 +3,7 @@
                                   Template~
 
 Description ........................................... |template-description|
+    Requirements ...................................... |template-requirements|
 Usage ................................................. |template-usage|
     Key Mappings ...................................... |template-key-mappings|
     Commands .......................................... |template-commands|
@@ -16,6 +17,13 @@ Configuration ......................................... |template-configuration|
 DESCRIPTION                                             *template-description*
 
 Here's a description of the Template plugin
+
+------------------------------------------------------------------------------
+REQUIREMENTS                                           *template-requirements*
+
+* Vim compiled with |+float| feature.
+* |vim-repeat| https://github.com/tpope/vim-repeat
+
 
 ==============================================================================
 USAGE                                                         *template-usage*
