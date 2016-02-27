@@ -38,7 +38,7 @@ t                       Explanation of a normal mode mapping goes here. There
 
 
                                                 *v_T*
-v_T                     Explanation of some visual mapping goes here
+{Visual}T               Explanation of some visual mapping goes here
                         Plug mapping: `<Plug>(visual-template)`
 
 ------------------------------------------------------------------------------
@@ -68,8 +68,8 @@ g:template_default_mapping
                         Example of alternate mappings: >
 
                         let g:template_default_mapping = 0
-                        nmap <Tab><Tab> <Plug>(fold-cycle-open)
-                        nmap <S-Tab><S-Tab> <Plug>(fold-cycle-close)
+                        nmap <Tab><Tab> <Plug>(split-join-open)
+                        nmap <S-Tab><S-Tab> <Plug>(split-join-close)
 <
 
                                                 *g:template_other_var*
