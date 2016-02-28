@@ -1,6 +1,6 @@
-*template* is supercool
+*template* is super cool
 
-                                  Template~
+                                  template~
 
 Description ........................................... |template-description|
     Requirements ...................................... |template-requirements|
@@ -10,26 +10,24 @@ Usage ................................................. |template-usage|
 Configuration ......................................... |template-configuration|
     Variables ......................................... |template-variables|
 
-
-                                                                *template.txt*
+                                                                  *template.txt*
 
 ==============================================================================
-DESCRIPTION                                             *template-description*
+DESCRIPTION                                               *template-description*
 
 Here's a description of the Template plugin
 
 ------------------------------------------------------------------------------
-REQUIREMENTS                                           *template-requirements*
+REQUIREMENTS                                             *template-requirements*
 
 * Vim compiled with |+float| feature.
 * |vim-repeat| https://github.com/tpope/vim-repeat
 
-
 ==============================================================================
-USAGE                                                         *template-usage*
+USAGE                                                           *template-usage*
 
 ------------------------------------------------------------------------------
-KEY MAPPINGS                                           *template-key-mappings*
+KEY MAPPINGS                                             *template-key-mappings*
                                                 *t*
 t                       Explanation of a normal mode mapping goes here. There
                         can also be additional lines of explanation
@@ -39,10 +37,10 @@ t                       Explanation of a normal mode mapping goes here. There
 
                                                 *v_T*
 {Visual}T               Explanation of some visual mapping goes here
-                        Plug mapping: `<Plug>(visual-template)`
+                        Plug mapping: `<Plug>(template-visual)`
 
 ------------------------------------------------------------------------------
-COMMANDS                                                   *template-commands*
+COMMANDS                                                     *template-commands*
                                                 *:Template*
 :[range]Template        Does the Template thins with the stuff. Here is where
                         some explanation goes
@@ -54,11 +52,24 @@ COMMANDS                                                   *template-commands*
                         Here is where some explanation goes also some about
                         {param1} and {param2}
 
+------------------------------------------------------------------------------
+FUNCTIONS                                                   *template-functions*
+
+template#fold_text({expr}, {num}[, {optional}]  *template#fold_text()*
+                Cleaner alternative to default fold text that includes the text
+                on the line, then fills the rest of the fold line with
+                {foldchar} and displays the number of folded lines on the
+                middle side of the screen.
+
+                Example for using '_' as the fill character: >
+
+                        set foldtext=clean_fold#fold_text('_')
+
 ==============================================================================
-CONFIGURATION                                         *template-configuration*
+CONFIGURATION                                           *template-configuration*
 
 ------------------------------------------------------------------------------
-VARIABLES                                                 *template-variables*
+VARIABLES                                                   *template-variables*
 
                                                 *g:template_default_mapping*
 g:template_default_mapping
@@ -68,8 +79,8 @@ g:template_default_mapping
                         Example of alternate mappings: >
 
                         let g:template_default_mapping = 0
-                        nmap <Tab><Tab> <Plug>(split-join-open)
-                        nmap <S-Tab><S-Tab> <Plug>(split-join-close)
+                        nmap <Right> <Plug>(template)
+                        xmap <Left> <Plug>(template-visual)
 <
 
                                                 *g:template_other_var*
